@@ -853,7 +853,7 @@ If you want to remove a reference for some reason — you’ve moved the server 
 
 ## Tagging ##
 
-Like most VCSs, Git has the ability to tag specific points in history as being important. Generally, people use this functionality to mark release points (`v1.0`, and so on). In this section, you’ll learn how to list the available tags, how to create new tags, and what the different types of tags are.
+Like most VCSs, Git has the ability to tag specific points in history as being important. Generally, people use this functionality to mark release points (`v1.0`, and so on). In this section, you’ll learn how to list the available tags, how to checkout a tag, how to create new tags, and what the different types of tags are.
 
 ### Listing Your Tags ###
 
@@ -872,6 +872,16 @@ You can also search for tags with a particular pattern. The Git source repo, for
 	v1.4.2.2
 	v1.4.2.3
 	v1.4.2.4
+
+### Checking Out Tags ###
+
+To switch your repository to the state recorded in an existing tag is essentially the same as checking out a branch in your repository. If your repository has a tag named v1.4.2.2, you can run this:
+
+	$ git checkout 'v1.4.2.2'
+
+Git will give you a message saying that you are in "detached HEAD state". If you make some changes and attempt to commit them, git doesn't know where to put them (ie: which branch to put them in). Tags are intended to be static place markers in your repositories development history, like product release versions, so typically you will not be wanting to change the state they point to. 
+
+If you really need to make and commit changes, you'll need to create a new branch with something like `git checkout -b 'v1.4.2.2-fixes'`. Note that the tag will not reflect your changes - if you need your changes to be recorded in a tag, it’s generally recommended to create a new one.
 
 ### Creating Tags ###
 
